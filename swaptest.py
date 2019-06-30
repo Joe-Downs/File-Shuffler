@@ -20,3 +20,11 @@ folder_one_filenames   = []
 folder_two_filenames   = []
 folder_three_filenames = []
 
+#Folder class to store information about each subfolder (no. of files, filetypes, filenames)
+class Folder:
+#Can a class reference an array?
+
+#Function(s) to gather information about each subfolder and initialize an instance of Folder
+def init_Folder:
+
+def gather_info:
