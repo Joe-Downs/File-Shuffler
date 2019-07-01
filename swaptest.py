@@ -15,22 +15,27 @@ while answer != "":
 
 print(swapped_extensions)
 
-#Empty arrays to preserve original filenames for later renaming of new files after move
-folder_one_filenames   = []
-folder_two_filenames   = []
-folder_three_filenames = []
-
 working_dir = directory_string
 
 #Folder class to store information about each subfolder (no. of files, filetypes, filenames)
 class Folder:
-    def __init__(self,
-                 filepath):
-        self.filepath = filepath
-        self.files    = []
-    def add_file(self, file)
+    def __init__(self, filepath):
+        self.filepath   = filepath
+        self.filenames  = []
+        self.file_count = 0
+        
+    def add_filename(self, filename):
+        self.filenames.append(filename)
+
+    def count_files(self):
+        self.file_count = len(self.filenames)
+
+    def display_names(self):
+        print(self.filenames)
+
+    def display_count(self):
+        print(self.file_count)
     
-#Can a class reference an array?
 
 #Function(s) to gather information about each subfolder and initialize an instance of Folder
 #init_Folder initializes a new instance of folder
