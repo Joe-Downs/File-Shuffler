@@ -15,30 +15,20 @@ while answer != "":
 
 print(swapped_extensions)
 
-working_dir = directory_string
 
-#Folder class to store information about each subfolder (no. of files, filetypes, filenames)
-class Folder:
-    def __init__(self, filepath):
-        self.filepath   = filepath
-        self.filenames  = []
-        self.file_count = 0
-        
-    def add_filename(self, filename):
-        self.filenames.append(filename)
+#For each folder and file in a directory, adds full path to either folder array or file array
 
-    def count_files(self):
-        self.file_count = len(self.filenames)
+dir_files  = os.listdir(directory_string)
+dir_array  = []
+file_array = []
+print(dir_files)
 
-    def display_names(self):
-        print(self.filenames)
+for entry in dir_files:
+    string_filepath = str(directory_string + "/" + entry)
+    if os.path.isdir(string_filepath): #If the path is a directory, add path to dir_array
+        dir_array.append(string_filepath)
+    elif os.path.isfile(string_filepath):#If the path is a file, add path to file_array
+        file_array.append(string_filepath)
 
-    def display_count(self):
-        print(self.file_count)
-    
-
-#Function(s) to gather information about each subfolder and initialize an instance of Folder
-#init_Folder initializes a new instance of folder
-def init_Folder():
-    
-#Functions called again if folder has_subfolder = true
+print(dir_array)
+print(file_array)
