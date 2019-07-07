@@ -15,15 +15,15 @@ while answer != "":
 
 print("Chosen Extensions: " + str(swapped_extensions))
 
+#destination = input("Choose the Destination for the Shuffled Directory: ")
 
-#For each folder and file in a directory, adds full path to either folder array or file array
+#dir_array must be declared with the initial path, else the program will result in an endless loop
 dir_array  = [directory_string]
 file_array = []
 
-#Need to have input for which directory to sort
+#Function to sort a given directory and add directory / files to the respective array
 def file_sort(target_dir):
     dir_files  = os.listdir(target_dir)
-   #print("Directory Files: " + str(dir_files))
     for entry in dir_files:
         if target_dir.endswith("/"):
             string_filepath = str(target_dir + entry)
@@ -40,6 +40,13 @@ while dir_array != []:
         file_sort(target_dir = directory)
         dir_array.remove(directory)
 
-print("Directory Array Final: " + str(dir_array))
-print("Directory Array: " + str(dir_array))
 print("File Array: " + str(file_array))
+
+###Idea Two
+#1 Rename and move at same time
+#2 Remove moved path from file_array
+
+#Only swap files of the same extension
+#Need to swap files
+
+def file_swap(original, destination, extension):
