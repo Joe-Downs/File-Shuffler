@@ -27,6 +27,7 @@ swapped_extension_tuple = tuple(swapped_extension_array)
 def file_sort(target_dir):
     dir_files  = os.listdir(target_dir)
     for entry in dir_files:
+        #os.path.join()
         if target_dir.endswith("/"):
             string_filepath = str(target_dir + entry)
         else:
@@ -54,10 +55,15 @@ for entry in file_array:
 #Only swap files of the same extension
 #Need to swap files
 
+"""
 def file_swap(source, destination, extension):
-    destination_extension = 
-    while 
+    destination_extension =
+    while
+
+#tempfile.mkstemp()
 
 for entry in file_array:
     for extension in swapped_extensions:
         file_swap(entry, file_array[random.randint(0, (len(file_array)-1), extension)
+"""
+ 
