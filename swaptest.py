@@ -1,6 +1,13 @@
 import random
 import os
 
+#Program Outline
+#1 Prompt user to select directory and extensions
+#  --Allow option for recursion (argparse?)
+#2 Iterate through each file / folder in the directory, adding each file and folder's full paths to a respective array
+#3 
+
+
 directory_string = input("Choose the Folder to Shuffle: ")
 directory_byte   = os.fsencode(directory_string)
 
@@ -47,9 +54,6 @@ while dir_array != []:
 for entry in file_array:
     print(entry)
 
-###Idea Two
-#1 Rename and move at same time
-#2 Remove moved path from file_array
 
 #Only swap files of the same extension
 #Need to swap files
