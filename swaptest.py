@@ -1,12 +1,11 @@
-import random
 import os
-
+import random
 #Program Outline
-#1 Prompt user to select directory and extensions
+#1 Prompt user to select directory and extension
 #  --Allow option for recursion (argparse?)
 #2 Iterate through each file / folder in the directory, adding each file and folder's full paths to a respective array
-#3 
-
+#3 Choose first entry in the file and a random file (of the same extension) elsewhere in the array (could be the first one)
+#4
 
 directory_string = input("Choose the Folder to Shuffle: ")
 directory_byte   = os.fsencode(directory_string)
