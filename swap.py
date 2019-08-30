@@ -1,5 +1,6 @@
 import os
 import random
+import tempfile
 
 #Program Outline
 #1 Prompt user to select directory and extension
@@ -60,18 +61,21 @@ while dir_array != []:
 for entry in file_array:
     print(entry)
 
-
+#Obtains the parent directory of the file
+def obtain_parent(filepath): 
+    final_separator_index = filepath.rfind("/")
+    if final_separator_index == -1:
+        final_separator_index = filepath.rfind("\\")
+    return filepath[:final_separator_index]
+                           
 #Only swap files of the same extension
-#Need to swap files
-
-"""
 def file_swap(source, destination, extension):
-    destination_extension =
-    while
-
-#tempfile.mkstemp()
+    #Do nothing if the source and destination paths are the same
+    if source == destination:
+        return
+    destination_dir = obtain_parent(destination) #Removes file from filepath to obtain parent directory
+    tempfile.mkstemp(dir=destination_dir) #file_array is string? (dir needs string)
 
 for entry in file_array:
     for extension in swapped_extensions:
-        file_swap(entry, file_array[random.randint(0, (len(file_array)-1), extension)
-"""
+        file_swap(entry, file_array[random.randint(0, (len(file_array)-1)), extension)
