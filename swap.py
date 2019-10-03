@@ -17,7 +17,7 @@ import tempfile
 directory_string = input("Choose the Folder to Shuffle: ")
 directory_byte   = os.fsencode(directory_string)
 
-print("\nPlease choose the extension(s) you wish to be swapped.\nPress enter to exit after you have finished input.\n")
+print("\nPlease choose the extension(s) you wish to be swapped.\nPress enter to continue after you have finished input.\n")
 
 swapped_extension_array = []
 answer = " "
@@ -74,8 +74,22 @@ def file_swap(source, destination, extension):
     if source == destination:
         return
     destination_dir = obtain_parent(destination) #Removes file from filepath to obtain parent directory
-    tempfile.mkstemp(dir=destination_dir) #file_array is string? (dir needs string)
+    tempfile.mkstemp(suffix= ".tempswap", dir=destination_dir) #file_array is string? (dir needs string)
+    destination_dir_files = os.listdir(destination_dir)
+    for entry in destination_dir_files: #Search for (hopefully) only file with .tempswap extension
+        if entry.endswith(".tempswap"):
+             tempfile_filepath = destination_dir + entry 
+    os.replace(source, tempfile_filepath)
 
+def get_extension(filepath):
+    extension_begin_index = entry.rfind(".")
+    extension = entry[extension_begin_index:]
+    return extension
+    
 for entry in file_array:
-    for extension in swapped_extensions:
-        file_swap(entry, file_array[random.randint(0, (len(file_array)-1)), extension)
+    if entry.endswith(swapped_extension_tuple):
+        first_extension = get_extension(entry)
+        second_index = random.randint(0, (len(file_array)-1))
+        second_extension = get_extension(file_array[second_index])
+        if first_extension == second_extension:
+            file_swap(entry, file_array[second_index], extension)
