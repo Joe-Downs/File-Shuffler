@@ -79,7 +79,7 @@ def file_swap(source, destination, extension):
     destination_dir_files = os.listdir(destination_dir)
     for entry in destination_dir_files: #Search for (hopefully) only file with .tempswap extension
         if entry.endswith(".tempswap"):
-             tempfile_filepath = destination_dir + entry 
+             tempfile_filepath = os.path.join(destination_dir, entry)
     os.replace(source, tempfile_filepath)
     os.replace(destination, source)
     os.replace(tempfile_filepath, destination)
