@@ -87,7 +87,7 @@ def file_swap(source, destination, extension):
     print("Original destination:   " + str(source))
     file_array.remove(source)
     file_array.remove(destination)
-    os.remove(tempfile_filepath)
+    #os.remove(tempfile_filepath)
 
     
 def get_extension(filepath):
