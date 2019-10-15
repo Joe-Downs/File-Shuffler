@@ -80,7 +80,12 @@ def file_swap(source, destination, extension):
         if entry.endswith(".tempswap"):
              tempfile_filepath = destination_dir + entry 
     os.replace(source, tempfile_filepath)
+    os.replace(destination, source)
+    os.replace(tempfile_filepath, destination)
+    file_array.remove(source)
+    file_array.remove(destination)
 
+    
 def get_extension(filepath):
     extension_begin_index = entry.rfind(".")
     extension = entry[extension_begin_index:]
