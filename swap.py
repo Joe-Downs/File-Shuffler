@@ -95,7 +95,7 @@ def get_extension(filepath):
     extension = filepath[extension_begin_index:]
     return extension
 
-while file_array =! []:
+while file_array != []:
     for entry in file_array:
         if entry.endswith(swapped_extension_tuple):
             first_extension = get_extension(entry)
