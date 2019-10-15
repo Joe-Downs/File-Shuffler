@@ -91,8 +91,8 @@ def file_swap(source, destination, extension):
 
     
 def get_extension(filepath):
-    extension_begin_index = entry.rfind(".")
-    extension = entry[extension_begin_index:]
+    extension_begin_index = filepath.rfind(".")
+    extension = filepath[extension_begin_index:]
     return extension
     
 for entry in file_array:
