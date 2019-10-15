@@ -94,15 +94,16 @@ def get_extension(filepath):
     extension_begin_index = filepath.rfind(".")
     extension = filepath[extension_begin_index:]
     return extension
-    
-for entry in file_array:
-    if entry.endswith(swapped_extension_tuple):
-        first_extension = get_extension(entry)
-        print(entry)
-        print(first_extension)
-        second_index = random.randint(0, (len(file_array)-1))
-        second_extension = get_extension(file_array[second_index])
-        print(file_array[second_index])
-        print(second_extension)
-        if first_extension == second_extension:
-            file_swap(entry, file_array[second_index], first_extension)
+
+while file_array =! []:
+    for entry in file_array:
+        if entry.endswith(swapped_extension_tuple):
+            first_extension = get_extension(entry)
+            print(entry)
+            print(first_extension)
+            second_index = random.randint(0, (len(file_array)-1))
+            second_extension = get_extension(file_array[second_index])
+            print(file_array[second_index])
+            print(second_extension)
+            if first_extension == second_extension:
+                file_swap(entry, file_array[second_index], first_extension)
