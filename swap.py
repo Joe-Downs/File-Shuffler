@@ -97,4 +97,4 @@ for entry in file_array:
         second_index = random.randint(0, (len(file_array)-1))
         second_extension = get_extension(file_array[second_index])
         if first_extension == second_extension:
-            file_swap(entry, file_array[second_index], extension)
+            file_swap(entry, file_array[second_index], first_extension)
