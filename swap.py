@@ -74,7 +74,8 @@ def file_swap(source, destination, extension):
     #Do nothing if the source and destination paths are the same
     if source == destination:
         return
-    print(extension)
+    print("Src: " + str(source))
+    print("Dst: " + str(destination))
     destination_dir = obtain_parent(destination) #Removes file from filepath to obtain parent directory
     tempfile.mkstemp(suffix= ".tempswap", dir=destination_dir) #file_array is string? (dir needs string)
     destination_dir_files = os.listdir(destination_dir)
@@ -84,8 +85,10 @@ def file_swap(source, destination, extension):
     os.replace(source, tempfile_filepath)
     os.replace(destination, source)
     os.replace(tempfile_filepath, destination)
+    """
     print("Original source:        " + str(destination))
     print("Original destination:   " + str(source))
+    """
     file_array.remove(source)
     file_array.remove(destination)
     #os.remove(tempfile_filepath)
@@ -100,11 +103,10 @@ while file_array != []:
     for entry in file_array:
         if entry.endswith(swapped_extension_tuple):
             first_extension = get_extension(entry)
+            print()
             print(entry)
-            print(first_extension)
             second_index = random.randint(0, (len(file_array)-1))
             second_extension = get_extension(file_array[second_index])
             print(file_array[second_index])
-            print(second_extension)
             if first_extension == second_extension:
                 file_swap(entry, file_array[second_index], first_extension)
