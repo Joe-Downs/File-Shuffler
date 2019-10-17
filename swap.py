@@ -40,12 +40,13 @@ swapped_extension_tuple = tuple(swapped_extension_array)
 def file_sort(target_dir):
     dir_files  = os.listdir(target_dir)
     for entry in dir_files:
-        #os.path.join()
+        """
         if target_dir.endswith("/"):
             string_filepath = str(target_dir + entry)
         else:
             string_filepath = str(target_dir + "/" + entry)
-            
+        """
+        string_filepath = os.path.join(target_dir, entry)
         if os.path.isdir(string_filepath):      #If the path is a directory, add path to dir_array
             dir_array.append(string_filepath)
         elif os.path.isfile(string_filepath):   #If the path is a file AND the extension has been chosen, add path to file_array
