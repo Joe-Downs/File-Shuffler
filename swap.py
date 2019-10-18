@@ -81,7 +81,7 @@ def file_swap(source, destination, extension):
         if entry.endswith(".tempswap"):
              tempfile_filepath = os.path.join(destination_dir, entry)
     print(source)
-    print(temp_filepath)
+    print(tempfile_filepath)
     os.replace(source, tempfile_filepath)
     os.replace(destination, source)
     os.replace(tempfile_filepath, destination)
