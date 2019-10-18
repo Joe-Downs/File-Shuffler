@@ -75,13 +75,12 @@ def file_swap(source, destination, extension):
     if source == destination:
         return
     destination_dir = obtain_parent(destination) #Removes file from filepath to obtain parent directory
-    tempfile.mkstemp(suffix= ".tempswap", dir=destination_dir) #file_array is string? (dir needs string)
+    tempfile = tempfile.mkstemp(suffix= ".tempswap", dir=destination_dir) #file_array is string? (dir needs string)
     destination_dir_files = os.listdir(destination_dir)
     for entry in destination_dir_files: #Search for (hopefully) only file with .tempswap extension
         if entry.endswith(".tempswap"):
              tempfile_filepath = os.path.join(destination_dir, entry)
-    print(source)
-    print(tempfile_filepath)
+    tempfile.close()
     os.replace(source, tempfile_filepath)
     os.replace(destination, source)
     os.replace(tempfile_filepath, destination)
