@@ -80,6 +80,8 @@ def file_swap(source, destination, extension):
     for entry in destination_dir_files: #Search for (hopefully) only file with .tempswap extension
         if entry.endswith(".tempswap"):
              tempfile_filepath = os.path.join(destination_dir, entry)
+    print(source)
+    print(temp_filepath)
     os.replace(source, tempfile_filepath)
     os.replace(destination, source)
     os.replace(tempfile_filepath, destination)
@@ -101,10 +103,10 @@ while file_array != []:
     for entry in file_array:
         if entry.endswith(swapped_extension_tuple):
             first_extension = get_extension(entry)
-            print()
-            print(entry)
+            #print()
+            #print(entry)
             second_index = random.randint(0, (len(file_array)-1))
             second_extension = get_extension(file_array[second_index])
-            print(file_array[second_index])
+            #print(file_array[second_index])
             if first_extension == second_extension:
                 file_swap(entry, file_array[second_index], first_extension)
