@@ -18,7 +18,10 @@ import tempfile
 directory_string = input("Choose the Folder to Shuffle: ")
 directory_byte   = os.fsencode(directory_string)
 
-print("\nPlease choose the extension(s) you wish to be swapped.\nPress enter to continue after you have finished input.\n")
+print()
+print("Please choose the extension(s) you wish to be swapped.")
+print("Press enter to continue after you have finished input.")
+print()
 
 swapped_extension_array = []
 answer = " "
@@ -41,16 +44,12 @@ swapped_extension_tuple = tuple(swapped_extension_array)
 def file_sort(target_dir):
     dir_files  = os.listdir(target_dir)
     for entry in dir_files:
-        """
-        if target_dir.endswith("/"):
-            string_filepath = str(target_dir + entry)
-        else:
-            string_filepath = str(target_dir + "/" + entry)
-        """
         string_filepath = os.path.join(target_dir, entry)
-        if os.path.isdir(string_filepath):      #If the path is a directory, add path to dir_array
+        #If the path is a directory, add path to dir_array
+        #If the path is a file AND the extension has been chosen, add path to file_array
+        if os.path.isdir(string_filepath):      
             dir_array.append(string_filepath)
-        elif os.path.isfile(string_filepath):   #If the path is a file AND the extension has been chosen, add path to file_array
+        elif os.path.isfile(string_filepath):   
             if string_filepath.endswith(swapped_extension_tuple):
                 file_array.append(string_filepath)
 
@@ -75,23 +74,23 @@ def file_swap(source, destination, extension):
     #Do nothing if the source and destination paths are the same
     if source == destination:
         return
-    destination_dir = obtain_parent(destination) #Removes file from filepath to obtain parent directory
-    tempfile.mkstemp(suffix= ".tempswap", dir=destination_dir) #file_array is string? (dir needs string)
+    #Removes file from filepath to obtain parent directory
+    destination_dir = obtain_parent(destination) 
+    tempfile.mkstemp(suffix= ".tempswap", dir=destination_dir)
     destination_dir_files = os.listdir(destination_dir)
-    for entry in destination_dir_files: #Search for (hopefully) only file with .tempswap extension
+    #Search for (hopefully) only file with .tempswap extension
+    for entry in destination_dir_files: 
         if entry.endswith(".tempswap"):
              tempfile_filepath = os.path.join(destination_dir, entry)
     shutil.move(source, tempfile_filepath)
     shutil.move(destination, source)
     shutil.move(tempfile_filepath, destination)
-    """
-    print("Original source:        " + str(destination))
-    print("Original destination:   " + str(source))
-    """
     file_array.remove(source)
     file_array.remove(destination)
-    #os.remove(tempfile_filepath)
-
+    try:
+        os.remove(tempfile_filepath)
+    except OSError:
+        pass
     
 def get_extension(filepath):
     extension_begin_index = filepath.rfind(".")
