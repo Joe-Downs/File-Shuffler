@@ -72,6 +72,7 @@ def obtain_parent(filepath):
                            
 #Only swap files of the same extension
 def file_swap(source, destination, extension):
+    global swapped_files_count
     #Do nothing if the source and destination paths are the same
     if source == destination:
         swapped_files_count += 1
