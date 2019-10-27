@@ -25,6 +25,7 @@ print()
 
 swapped_extension_array = []
 answer = " "
+swapped_files_count = 0
 
 #Prompt reappears after each input until the user hits enter on the blank field
 while answer != "":
@@ -59,8 +60,8 @@ while dir_array != []:
         dir_array.remove(directory)
 
 #print("File Array: " + str(file_array))
-for entry in file_array:
-    print(entry)
+#for entry in file_array:
+#    print(entry)
 
 #Obtains the parent directory of the file
 def obtain_parent(filepath): 
@@ -73,6 +74,7 @@ def obtain_parent(filepath):
 def file_swap(source, destination, extension):
     #Do nothing if the source and destination paths are the same
     if source == destination:
+        swapped_files_count += 1
         return
     #Removes file from filepath to obtain parent directory
     destination_dir = obtain_parent(destination) 
@@ -91,6 +93,8 @@ def file_swap(source, destination, extension):
         os.remove(tempfile_filepath)
     except OSError:
         pass
+    swapped_files_count += 2
+    
     
 def get_extension(filepath):
     extension_begin_index = filepath.rfind(".")
@@ -108,3 +112,7 @@ while file_array != []:
             #print(file_array[second_index])
             if first_extension == second_extension:
                 file_swap(entry, file_array[second_index], first_extension)
+                #Checkpoint print statement every 50 files
+                if swapped_files_count % 50 == 0:
+                    print(str(swapped_files_count) + " files have been swapped!")
+                
