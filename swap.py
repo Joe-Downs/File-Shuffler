@@ -88,8 +88,8 @@ def file_swap(source, destination, extension):
     os.rename(source, tempfile_filepath)
     os.rename(destination, source)
     os.rename(tempfile_filepath, destination)
-    file_array.remove(source)
-    file_array.remove(destination)
+    #file_array.remove(source)
+    #file_array.remove(destination)
     #try:
     #    os.remove(tempfile_filepath)
     #except OSError:
@@ -113,6 +113,8 @@ while file_array != []:
             #print(file_array[second_index])
             if first_extension == second_extension:
                 file_swap(entry, file_array[second_index], first_extension)
+                file_array.remove(entry)
+                file_array.remove(file_array[second_index])
                 #Checkpoint print statement every 50 files
                 if swapped_files_count % 50 == 0:
                     print(str(swapped_files_count) + " files have been swapped!")
