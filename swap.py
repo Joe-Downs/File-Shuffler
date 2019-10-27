@@ -87,9 +87,9 @@ def file_swap(source, destination, extension):
     for entry in destination_dir_files: 
         if entry.endswith(".tempswap"):
              tempfile_filepath = os.path.join(destination_dir, entry)
-    os.rename(source, tempfile_filepath)
-    os.rename(destination, source)
-    os.rename(tempfile_filepath, destination)
+    os.replace(source, tempfile_filepath)
+    os.replace(destination, source)
+    os.replace(tempfile_filepath, destination)
     #file_array.remove(source)
     #file_array.remove(destination)
     #try:
