@@ -85,15 +85,15 @@ def file_swap(source, destination, extension):
     for entry in destination_dir_files: 
         if entry.endswith(".tempswap"):
              tempfile_filepath = os.path.join(destination_dir, entry)
-    shutil.move(source, tempfile_filepath)
-    shutil.move(destination, source)
-    shutil.move(tempfile_filepath, destination)
+    os.rename(source, tempfile_filepath)
+    os.rename(destination, source)
+    os.rename(tempfile_filepath, destination)
     file_array.remove(source)
     file_array.remove(destination)
-    try:
-        os.remove(tempfile_filepath)
-    except OSError:
-        pass
+    #try:
+    #    os.remove(tempfile_filepath)
+    #except OSError:
+    #    pass
     swapped_files_count += 2
     
     
