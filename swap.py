@@ -69,10 +69,12 @@ def obtain_parent(filepath):
     if final_separator_index == -1:
         final_separator_index = filepath.rfind("\\")
     return filepath[:final_separator_index]
-                           
+
+file_swap_calls = 0
 #Only swap files of the same extension
 def file_swap(source, destination, extension):
     global swapped_files_count
+    global file_swap_calls
     #Do nothing if the source and destination paths are the same
     if source == destination:
         swapped_files_count += 1
@@ -95,6 +97,7 @@ def file_swap(source, destination, extension):
     #except OSError:
     #    pass
     swapped_files_count += 2
+    file_swap_calls += 1
     
     
 def get_extension(filepath):
@@ -112,10 +115,12 @@ while file_array != []:
             second_extension = get_extension(file_array[second_index])
             #print(file_array[second_index])
             if first_extension == second_extension:
+                print("Source: " + str(entry))
+                print("Dst:    " + str(file_array[second_index]))
                 file_swap(entry, file_array[second_index], first_extension)
                 file_array.remove(entry)
-                file_array.remove(file_array[second_index])
+                #file_array.remove(file_array[second_index])
                 #Checkpoint print statement every 50 files
                 if swapped_files_count % 50 == 0:
                     print(str(swapped_files_count) + " files have been swapped!")
-                
+print(file_swap_calls)
